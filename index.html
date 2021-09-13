@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Tip calculator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    *
+    {
+      box-sizing: border-box;
+    }
+    .attribution { margin-top: 10px; font-size: 15px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+    body{
+      display:flex;
+      background-color:  hsl(0, 0%, 100%);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .main
+    {
+      color: gray;
+      display: flex;
+      width: 800px;
+      height: 550px;
+      background-color: hsl(185, 41%, 84%);
+      justify-content: center;
+      align-items: center;
+      margin-top: 80px;
+      flex-direction: column;
+    }
+    .content
+    {
+      display: flex;
+      background-color: hsl(0, 0%, 100%);
+      width: 450px;
+      height: 300px;
+      flex-direction: row;
+      border-radius: 10px;
+    }
+    .content .cal
+    {
+      display: flex;
+      flex-direction: column;
+      margin: 10px;
+    }
+    ul{
+      display: flex;
+      list-style-type: none;
+      flex-direction: row;
+      
+    }
+    .submit input
+    {
+       width: 61.93px;
+       margin: 2px;
+       border: none;
+       border-radius: 2px;
+       color: white;
+       padding: 2%;
+    }
+    .cal{
+      width: 225px;
+    }
+    .img
+    {
+      width: 218px;
+      background-color: hsl(183, 100%, 15%);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    h4
+    {
+      color: hsl(183, 100%, 15%);
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+<div class="main">
+  <h4>S&nbsp;P&nbsp;L&nbsp;I<br>T&nbsp;T&nbsp;E&nbsp;R</h4>
+  <div class="content">
+  <div class="cal">
+  <p>Bill</p>
+  <input id='Bill' style="background: url('images/icon-dollar.svg') no-repeat scroll 7px 7px; padding-left:60px ;
+  height: 30px; background-color: hsl(189, 41%, 97%); border: 0px; border-radius: 2px;" type="number">
+  <p>Select Tip %</p>
+  <div class="submit">
+    <input style="background-color: hsl(183, 100%, 15%);"onclick="cal(this.value)" type="submit" value="5%">
+    <input style="background-color: hsl(183, 100%, 15%);" onclick="cal(this.value)"type="submit" value="10%">
+    <input style="background-color:hsl(172, 67%, 45%); color: black" type="submit" onclick="cal(this.value)"value="15%"><br>
+    <input style="background-color: hsl(183, 100%, 15%);" type="submit" onclick="cal(this.value)"value="25%">
+    <input style="background-color: hsl(183, 100%, 15%);" type="submit" onclick="cal(this.value)"value="50%">
+    <input style="background-color: hsl(189, 41%, 97%); color: lightslategray;" class="button2" onclick="cal(this.value)" type="submit" value="Custom">
+</div>
+  <p>Number of People</p>
+  <input style="background: url('images/icon-person.svg') no-repeat scroll 7px 7px; padding-left:60px ;
+  height: 30px; background-color: hsl(189, 41%, 97%); border: 0px; border-radius: 2px;" type="number" id="person">
+  </div>
+  <div class="img">
+    <p>Tip Amount<br><span style="color: hsl(186, 14%, 43%);">/ person</span>&nbsp;&nbsp;<span style="color: hsl(172, 67%, 45%);" id='Amount'></span></p>
+    <p>Total<br><span style="color: hsl(186, 14%, 43%);">/ person</span>&nbsp;&nbsp;<span style="color: hsl(172, 67%, 45%);" id='TotalAmount'></span></p>
+    <input style="color: lightgray; background-color: hsl(172, 67%, 45%); border: none; border-radius:2px;
+    width: 200px; height: auto; padding: 5px; margin-top: 45px; text-decoration: solid;" type="button" value="RESET">
+  </div>
+</div>
+</div>
+  <footer>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">sai tarun</a>.
+  </div>
+  </footer>
+</body>
+<script>
+function cal(e)
+{
+  let sum;
+  let Amount=document.getElementById('Amount');
+  let TotalAmount=document.getElementById('TotalAmount');
+  let num =document.getElementById('Bill').value;
+  let person=document.getElementById('person').value;
+  if(num&&person)
+  {
+    if(e=='Custom')
+    {
+      e=prompt("Enter the Percentage you want to give?");
+    }
+    e.replace('%','');
+    sum=((num*Number(parseInt(e)))/100)/person;
+    num=(num/person)+sum;
+    Amount.innerText="$"+sum.toFixed(2);
+    TotalAmount.innerText="$"+num.toFixed(2);
+
+  }
+  else{
+    alert("Please enter Bill and persons");
+  }
+  
+
+}
+</script>
+</html>
